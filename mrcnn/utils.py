@@ -429,6 +429,8 @@ def resize_image(image, min_dim=None, max_dim=None, min_scale=None, mode="square
     image_dtype = image.dtype
     # Default window (y1, x1, y2, x2) and default scale == 1.
     h, w = image.shape[:2]
+    if len(image.shape) == 2:
+        image = np.dstack((image,image,image))
     window = (0, 0, h, w)
     scale = 1
     padding = [(0, 0), (0, 0), (0, 0)]
