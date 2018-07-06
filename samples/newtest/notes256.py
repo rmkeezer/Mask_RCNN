@@ -20,7 +20,7 @@ from imageio import imread
 import matplotlib
 import matplotlib.pyplot as plt
 
-from notes_config import NotesConfig
+from notes_config256 import NotesConfig
 
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
@@ -34,7 +34,6 @@ FULLSET = np.array([fn for fn in os.listdir(ROOT_DIR + '/datasets/midis/2secmask
 np.random.shuffle(FULLSET)
 split = int(len(FULLSET)*0.9)
 TRAINSET, VALSET = FULLSET[:split], FULLSET[split:]
-
 
 class NotesDataset(utils.Dataset):
     """Generates the notes synthetic dataset. The dataset consists of simple
