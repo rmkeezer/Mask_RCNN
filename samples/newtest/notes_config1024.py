@@ -13,7 +13,7 @@ class NotesConfig(Config):
     # Train on 1 GPU and 8 images per GPU. We can put multiple images on each
     # GPU because the images are small. Batch size is 8 (GPUs * images/GPU).
     GPU_COUNT = 1
-    IMAGES_PER_GPU = 4
+    IMAGES_PER_GPU = 2
 
     # Number of classes (including background)
     NUM_CLASSES = 1 + 127  # background + 128 notes
@@ -21,8 +21,8 @@ class NotesConfig(Config):
     # Use small images for faster training. Set the limits of the small side
     # the large side, and that determines the image shape.
     IMAGE_RESIZE_MODE = "square"
-    IMAGE_MIN_DIM = 512
-    IMAGE_MAX_DIM = 512
+    IMAGE_MIN_DIM = 1024
+    IMAGE_MAX_DIM = 1024
 
     # Use smaller anchors because our image and objects are small
     RPN_ANCHOR_SCALES = (8, 16, 32, 64, 128)  # anchor side in pixels
@@ -32,15 +32,15 @@ class NotesConfig(Config):
     TRAIN_ROIS_PER_IMAGE = 64
 
     # Use a small epoch since the data is simple
-    STEPS_PER_EPOCH = 1000
+    STEPS_PER_EPOCH = 250
 
     # use small validation steps since the epoch is small
-    VALIDATION_STEPS = 50
+    VALIDATION_STEPS = 25
 
     # If enabled, resizes instance masks to a smaller size to reduce
     # memory load. Recommended when using high-resolution images.
     # USE_MINI_MASK = True
-    # MINI_MASK_SHAPE = (32, 32)  # (height, width) of the mini-mask
+    # MINI_MASK_SHAPE = (64, 64)  # (height, width) of the mini-mask
 
 def get_ax(rows=1, cols=1, size=8):
     """Return a Matplotlib Axes array to be used in
